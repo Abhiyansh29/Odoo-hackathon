@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Details – ReWear</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-detail {
+      padding: 3rem;
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      gap: 2rem;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 20px;
+    }
+
+    .product-detail img {
+      width: 350px;
+      border-radius: 15px;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-info h1 {
+      font-size: 2rem;
+      color: #2b5735;
+    }
+
+    .product-info p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .btns {
+      margin-top: 1.5rem;
+    }
+
+    .btns button {
+      margin-right: 1rem;
+      padding: 0.8rem 1.2rem;
+      background-color: #2b5735;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btns button:hover {
+      background-color: #244c2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-detail">
+    <img id="productImage" src="" alt="Product" />
+    <div class="product-info">
+      <h1 id="productTitle">Product Title</h1>
+      <p id="productDescription">This is a description of the product.</p>
+      <p><strong>Size:</strong> <span id="productSize">M</span></p>
+      <p><strong>Condition:</strong> <span id="productCondition">Gently Used</span></p>
+      <p><strong>Tags:</strong> <span id="productTags">#casual #denim</span></p>
+
+      <div class="btns">
+        <button>Swap Request</button>
+        <button>Redeem via Points</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('productImage').src = params.get("img") || "assets/h1.jpg";
+    document.getElementById('productTitle').textContent = params.get("title") || "Unknown Product";
+    document.getElementById('productDescription').textContent = params.get("desc") || "No description provided.";
+    document.getElementById('productSize').textContent = params.get("size") || "N/A";
+    document.getElementById('productCondition').textContent = params.get("condition") || "N/A";
+    document.getElementById('productTags').textContent = params.get("tags") || "#eco";
+  </script>
+</body>
+</html>

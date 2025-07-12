@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard – ReWear</title>
+
+  <!-- Firebase scripts again (same as login/signup) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f9f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .dashboard {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Welcome to ReWear!</h1>
+    <p>You are now logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // Firebase v10 initialization (remove modular part)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4EzYLtNrG3iAZlJ6o5aFKQeDD62pdizU",
+      authDomain: "rewear-b586e.firebaseapp.com",
+      projectId: "rewear-b586e",
+      storageBucket: "rewear-b586e.appspot.com",
+      messagingSenderId: "85275471249",
+      appId: "1:85275471249:web:e755e678534e66cab47e30",
+      measurementId: "G-GQF10KJ0J0"
+    };
+  
+    firebase.initializeApp(firebaseConfig);
+  
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        alert("Please login first.");
+        window.location.href = "login.html";
+      }
+    });
+  
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+  
+</body>
+</html>

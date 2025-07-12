@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – ReWear</title>
+  <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4EzYLtNrG3iAZlJ6o5aFKQeDD62pdizU",
+      authDomain: "rewear-b586e.firebaseapp.com",
+      projectId: "rewear-b586e",
+      storageBucket: "rewear-b586e.appspot.com",
+      messagingSenderId: "85275471249",
+      appId: "1:85275471249:web:e755e678534e66cab47e30",
+      measurementId: "G-GQF10KJ0J0"
+    };
+  
+    // Initialize Firebase (v10 style)
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(to bottom right, #dcefe4, #a7ccb5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+    }
+
+    .login-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 1000px;              /* increased from 800px */
+    max-width: 95%;             /* allows responsiveness */
+    height: 600px;              /* NEW: set a fixed height */
+    display: flex;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    justify-content: center;
+    }
+
+    .login-image {
+      flex: 1;
+      background: url('./assets/hpic.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    .login-form-section {
+  flex: 1;
+  padding: 4rem 3rem; /* increased padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+    .login-form-section h2 {
+      font-size: 2rem;
+      color: #2b5735;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #5c7a6f;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #2b5735;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #b4c8b8;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2b5735;
+    }
+
+    .cta {
+      background-color: #2b5735;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #244c2f;
+    }
+
+    .signup-link {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .signup-link a {
+      color: #2b5735;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+        width: 95%;
+      }
+
+      .login-image {
+        height: 200px;
+      }
+
+      .login-form-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-image"></div>
+    <div class="login-form-section">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Log in to continue swapping sustainably 🌿</p>
+
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+
+        <button type="submit" class="cta">Login</button>
+      </form>
+
+      <p class="signup-link">Don’t have an account? <a href="signup.html">Sign up here</a></p>
+
+    </div>
+  </div>
+
+  <!-- STEP 4: Login logic -->
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+  
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("Login successful!");
+          window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+          alert("Login failed: " + error.message);
+        });
+    });
+  </script>
+  </body>
+  </html>
+  
+
+  

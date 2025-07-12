@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear – Community Clothing Exchange</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">♻️ ReWear</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Browse Items</a>
+      <a href="your-listing.html">Your Listing</a>
+      <button class="cta" onclick="window.location.href='login.html'">Start Swapping</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Swap Clothes.<br>Save the Planet.</h1>
+      <p>Join a growing community reducing fashion waste through reusability and exchange.</p>
+      <div class="hero-buttons">
+        <button class="cta" onclick="window.location.href='login.html'">Start Swapping</button>
+        <button>Browse Items</button>
+        <button>List an Item</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Items -->
+  <section class="featured">
+    <h2>🌟 Featured Items</h2>
+    <div class="item-list">
+      <div class="item-card">
+        <img src="assets/h1.jpg" alt="Beige Hoodie" />
+        <h3>Beige Hoodie</h3>
+        <p>Size 42</p>
+        <button class="swap-btn" onclick="location.href='product.html?img=assets/h1.jpg&title=Beige Hoodie&desc=Warm and comfy beige hoodie for winter.&size=42&condition=Like New&tags=#hoodie #winter'">Buy</button>
+
+      </div>
+      <div class="item-card">
+        <img src="assets/d.jpg" alt="Denim Jacket" />
+        <h3>Denim Jacket</h3>
+        <p>Size 45</p>
+        <button class="swap-btn" onclick="location.href='product.html?img=assets/d.jpg&title=Denim Jacket&desc=Classic denim jacket with rugged stitching, good for casual wear.&size=45&condition=Good&tags=#denim #jacket #blue'">Buy</button>
+
+      </div>
+      <div class="item-card">
+        <img class="ss" src="assets/s.jpg" alt="Patterned Skirt" />
+        <h3>Patterned Skirt</h3>
+        <p>Soduser</p>
+        <button class="swap-btn" onclick="location.href='product.html?img=assets/s.jpg&title=Patterned Skirt&desc=Colorful patterned skirt suitable for all occasions.&size=M&condition=Excellent&tags=#skirt #patterned #vibrant'">Buy</button>
+
+      </div>
+      <div class="item-card">
+        <img src="assets/b.jpg" alt="Brown Jacket" />
+        <h3>Brown Jacket</h3>
+        <p>Spoke</p>
+        <button class="swap-btn" onclick="location.href='product.html?img=assets/b.jpg&title=Brown Jacket&desc=Stylish brown jacket, light-weight and eco-friendly material.&size=L&condition=Like New&tags=#jacket #brown #eco'">Buy</button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <p>👤</p>
+        <h4>Sign Up &<br>Earn Points</h4>
+      </div>
+      <div class="step" onclick="window.location.href='list-item.html'" style="cursor:pointer;">
+        <p>🖼️</p>
+        <h4>List Your<br>Unused Clothes</h4>
+      </div>
+      
+      <div class="step">
+        <p>🔁</p>
+        <h4>Swap Directly</h4>
+      </div>
+    </div>
+    <button class="cta">Create Your First Listing</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

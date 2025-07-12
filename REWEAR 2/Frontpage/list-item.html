@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>List Your Clothes – ReWear</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #dcefe4, #a7ccb5);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+    .form-container {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      width: 700px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2b5735;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: 600;
+      color: #2b5735;
+    }
+    input, textarea, select {
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #b4c8b8;
+      font-size: 1rem;
+      outline: none;
+    }
+    .cta {
+      margin-top: 1rem;
+      background-color: #2b5735;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .cta:hover {
+      background-color: #244c2f;
+    }
+    img.preview {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>📸 List Your Unused Clothes</h2>
+    <form id="uploadForm">
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" accept="image/*" required />
+      <img id="preview" class="preview" style="display:none;" />
+
+      <label for="title">Item Title</label>
+      <input type="text" id="title" placeholder="e.g. Blue Denim Jacket" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="3" placeholder="Brief description of the item" required></textarea>
+
+      <label for="size">Size</label>
+      <input type="text" id="size" placeholder="e.g. M, L, 40" required />
+
+      <label for="condition">Condition</label>
+      <select id="condition" required>
+        <option value="">--Select--</option>
+        <option>Like New</option>
+        <option>Gently Used</option>
+        <option>Used</option>
+        <option>Worn Out</option>
+      </select>
+
+      <label for="tags">Tags</label>
+      <input type="text" id="tags" placeholder="#winter #jacket #men" required />
+
+      <button class="cta" type="submit">Submit Listing</button>
+    </form>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('image');
+    const preview = document.getElementById('preview');
+    let uploadedImageURL = "";
+  
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (file) {
+        uploadedImageURL = URL.createObjectURL(file);
+        preview.src = uploadedImageURL;
+        preview.style.display = "block";
+      }
+    });
+  
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      const title = document.getElementById('title').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const size = document.getElementById('size').value.trim();
+      const condition = document.getElementById('condition').value;
+      const tags = document.getElementById('tags').value.trim();
+  
+      // Prepare the item object
+      const item = {
+        img: uploadedImageURL,
+        title,
+        desc: description,
+        size,
+        condition,
+        tags
+      };
+  
+      // Get existing items or empty array
+      const listings = JSON.parse(localStorage.getItem("yourListings")) || [];
+  
+      // Add new item
+      listings.push(item);
+  
+      // Save back to localStorage
+      localStorage.setItem("yourListings", JSON.stringify(listings));
+  
+      // Redirect
+      window.location.href = "your-listing.html";
+    });
+  </script>
+  
+  
+
+</body>
+</html>

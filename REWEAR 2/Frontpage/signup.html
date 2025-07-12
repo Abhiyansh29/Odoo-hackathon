@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up – ReWear</title>
+  <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4EzYLtNrG3iAZlJ6o5aFKQeDD62pdizU",
+    authDomain: "rewear-b586e.firebaseapp.com",
+    projectId: "rewear-b586e",
+    storageBucket: "rewear-b586e.appspot.com",
+    messagingSenderId: "85275471249",
+    appId: "1:85275471249:web:e755e678534e66cab47e30",
+    measurementId: "G-GQF10KJ0J0"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+  
+
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #dcefe4, #a7ccb5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background-color: #ffffff;
+      border-radius: 20px;
+      width: 1000px;
+      max-width: 95%;
+      height: 700px;
+      display: flex;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .signup-image {
+      flex: 1;
+      background: url('./assets/sign.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    .signup-form-section {
+      flex: 1;
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signup-form-section h2 {
+      font-size: 2rem;
+      color: #2b5735;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #5c7a6f;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #2b5735;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #b4c8b8;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2b5735;
+    }
+
+    .cta {
+      background-color: #2b5735;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #244c2f;
+    }
+
+    .login-link {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .login-link a {
+      color: #2b5735;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .signup-container {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+      }
+
+      .signup-image {
+        height: 200px;
+      }
+
+      .signup-form-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-image"></div>
+    <div class="signup-form-section">
+      <h2>Create Your Account</h2>
+      <p class="subtitle">Sign up and start swapping fashion sustainably 🌱</p>
+
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required />
+
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Repeat your password" required />
+
+        <button type="submit" class="cta">Sign Up</button>
+      </form>
+
+      <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+    </div>
+  </div>
+
+  <!-- STEP 3: Signup logic -->
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm-password").value;
+  
+      if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+      }
+  
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("Signup successful!");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          alert("Signup failed: " + error.message);
+        });
+    });
+  </script>
+  </body>
+  </html>
+  

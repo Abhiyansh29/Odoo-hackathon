@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Preview Listing – ReWear</title>
+  <style>
+    body {
+      background: #f0f9f3;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+
+    .preview-container {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      gap: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .preview-container img {
+      width: 350px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    .details {
+      flex: 1;
+    }
+
+    .details h1 {
+      font-size: 2rem;
+      color: #2b5735;
+    }
+
+    .details p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      color: #444;
+    }
+
+    .back-btn {
+      margin-top: 1rem;
+      background-color: #2b5735;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background-color: #244c2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <img id="itemImage" src="" alt="Uploaded Item" />
+    <div class="details">
+      <h1 id="itemTitle">Title</h1>
+      <p id="itemDesc">Description</p>
+      <p><strong>Size:</strong> <span id="itemSize"></span></p>
+      <p><strong>Condition:</strong> <span id="itemCondition"></span></p>
+      <p><strong>Tags:</strong> <span id="itemTags"></span></p>
+      <button class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("itemImage").src = params.get("img");
+    document.getElementById("itemTitle").textContent = params.get("title");
+    document.getElementById("itemDesc").textContent = params.get("desc");
+    document.getElementById("itemSize").textContent = params.get("size");
+    document.getElementById("itemCondition").textContent = params.get("condition");
+    document.getElementById("itemTags").textContent = params.get("tags");
+  </script>
+</body>
+</html>
