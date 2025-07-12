@@ -8,3 +8,4 @@ Problem num:-3
 Problem name- ReWear-Community Clothing Exchange
 
 Repo link:-https://github.com/Abhiyansh29/Odoo-hackathon.git
+Demo Video Link:https://youtu.be/yioA5TNN5rY
